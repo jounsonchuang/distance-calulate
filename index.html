@@ -10,6 +10,27 @@
         body { padding: 20px; max-width: 800px; margin: 0 auto; }
         .result-card { margin-top: 20px; }
         #map { height: 300px; width: 100%; margin-top: 10px; display: none; }
+        #tripHistoryTable a { text-decoration: none; color: #212529; }
+        
+        /* 新增：提示選單的樣式 */
+        #suggestions {
+            position: absolute; /* 相對於父元素定位 */
+            z-index: 1000;
+            width: 100%;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .suggestion-item {
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 <body>
@@ -24,41 +45,169 @@ HOME,新北市土城區中央路二段61巷35號
 INVENTEC,台北市內湖區行善路158號
 Chroma,桃園市龜山區文茂路88號
 台達二廠,桃園市龜山區山鶯路252號
+台達桃園二廠,桃園市龜山區山鶯路252號
+台達IABG,桃園市桃園區大林里興隆路18號
+台達中壢,桃園市中壢區永福里東園路16號
+內湖台達,114 台北市內湖區陽光街256號
+立端Lanner(台北),新北市汐止區大同路二段173號7樓
+立端Lanner(新竹),新竹市關新路27號3F~6
+致茂CHROMA,桃園市龜山區文茂路88 號
+3Y POWER 善元科技,桃園市龜山區民生北路一段576、578號2樓
+和碩Pegatron,台北市北投區立功街76號
+協同科技Union storage,新北市五股區五工路149號
+亞力電機allis,115台北市南港區三重路19-11號12樓
+瑞澤中壢,桃園市中壢區中央東路88號18樓
+瑞澤新屋,新屋區中山東路一段156巷93弄19號
+威剛ADATA中和,新北市中和區中正路736號
+西勝國際地址,新北市新莊區中正路669號5樓
+嘉普科技TREND POWER,新竹縣湖口鄉八德路2段471號
+優源unifive,新北市三重區重新路五段609巷12號6樓之14
+天掄MAGIC POWER (Youden),新北市中和區連城路268號9樓
+台優電機TDCM(CJC),桃園市觀音區草漯里成功路一段507號
+鉅祥企業G-SHANK (Goaltech),桃園市桃園區復興路205號A棟17樓-3.
+廣明光電 Quanta Storage(Horustech),桃園市龜山區華亞二路58-2號6樓
+瑞安電資 Raitek(Horustech),桃園市龍潭區高原里渴望路83號1樓
+友達光電AUO(Horustech),臺灣新竹市300094東區科學園區力行二路1號
+聯嘉光電EOI(Horustech),台灣新竹科學工業園區苗栗縣竹南鎮科東一路2號
+有量科技Amita (CJC),桃園縣龜山鄉茶專路6號
+亞德光機Alder,桃園市平鎮區天津街171號
+佳世達 Qisda,桃園市龜山區山鶯路157號
+凱銳光電  JET OPTO,台北市內湖區陽光街300號7樓之2
+達方電子 DARFON,龜山區山鶯路167-1號
+友達光電AUO(Horustech),臺灣新竹市300094東區科學園區力行二路1號
+明創科技MAXTRUM,新竹縣新埔鎮清水里汶水坑10鄰73號
+鴻騰精密科技 Foxconn,新北市土城區中山路66-1號
+鴻騰精密Foxconn Interconnect,新北市土城區中山路66-1號
+戴姆勒Daimler Trucks Asia Taiwan,台北市松山區敦化北路260號6樓
+HP,台北市南港區經貿二路66號10樓
+福峰great foward,桃園市龜山區復興三路398號(華亞科技園區)
+振曜科技NETRONIX 302,新竹縣竹北市博愛街945號
+HMD(厚美德) 305,新竹縣新埔鎮民生街181號
+美超微 storage 334,桃園市八德區興豐路1899號
+聯想LENOVO,台北市中山區樂群三路128號16樓
+ACBEL北投康舒,台北市北投區中央南路二段18號
+CHICONY三重群電,新北市三重區光復路2段69號
+LITEON新莊光寶,新北市新莊區思源路555號
+AbleTech淡水璟明設計,新北市金山區信義路76巷4號
+造隆,桃園市蘆竹區光明路二段151巷10號
+開元通訊InnoComm,新竹市新安路6號3樓
+Gogoro睿能創意,333桃園市龜山區頂湖路33號
+亞元ATECH,桃園市龜山區華亞一路66號
+亞源,桃園市龍潭區烏林里三十九鄰工二路一段177號
+CHEM中興電工,桃園市龜山區文德路25號
+Foctron鴻華先進,新北市新店區中興路三段3號8樓
+Sangean山進電子,23586 新北市中和區中正路928號17樓
+Arcadyan智易科技,300 新竹市東區光復路二段8號
+添誠資訊SURESTAR,新北市樹林區大安路2-1號
+CONTEC（康泰克）,235台灣中和區中正路738號
+CTECH西勝國際地址,新北市新莊區中正路669號5樓
+TSMT台表科,330 桃園縣桃園市桃園區桃鶯路439號
+CLEVO - 藍天電腦,新北市新莊區思源路555號35樓
+翌勝EDAC -,新北市中和區建一路150号11樓
+Inventec英業達,桃園區大智路88號
+艾普斯電源 (鎰福電子)preenpower,汐止大同路二段139號2樓
+亞力電機Allis(南港),115 台北市南港區三重路19-11號12樓
+亞力電機Allis(新莊),242 新北市新莊區瓊林南路317號
+Everfocus慧友,新北市板橋區文化路二段367號3樓
+亞元ATECH,台北市大安區基隆路4段43號研揚大樓7樓
+智邦accton,新竹市科學園區研新三路1號
+碩天Cyberpower,114 台北市內湖區金莊路26號11樓
+儀控TAIE,新北市中和區建八路2號4樓之9
+羅技Logitech,新竹科學工業園區新竹市研新四路2號
+全漢FSP,33068桃園市桃園區建國東路22號
+HCMF,新北市新店區北新路一段86號27樓
+研晶,新北市土城區永豐路173-8 號5 樓
+EVSBG,324桃園市平鎮區中興路平鎮段458號
+松美,新北市汐止區新台五路1段99號16樓之8
+UMEC,新北市三重區重新路5段609巷10號
+SOWCHENG碩成科技,328桃園市觀音區忠愛路愛一巷75弄7號崙坪一路7號
+系統電子Sysgration,114台北市內湖區堤頂大道一段1號
+奇景光電(HIMX),300新竹市東區光復路二段289號5 樓
+台林TAILYN,338028臺灣桃園市蘆竹區榮安路10號
+電統電源powertank energy,臺北市內湖區堤頂大道1段1號3樓之1
+工易自動化Endex,333桃園市龜山區科技一路29號
+宏力Horing Lih,235新北市中和區中山路二段327巷18號4樓
+怡利電子e-lead,509彰化縣伸港鄉工東一路37號
+Goalstar,桃園市桃園區文中里正光路423之3號
+QQE(亞元),106台北市大安區基隆路四段43號研揚大樓7樓
+Keeper咸瑞科技,248新北市五股區五權七路29號
+鴻發國際MASTERWORK AUTOMODULES,新北市汐止區新台五路一段114號11F
+肯微科技 Compuware,新北市中和區連城路232號5樓.
+信昌明芳集團 HCMF-,新北市新店區北新路一段86號27樓
+Foxtron鴻華先進,新北市新店區中興路三段3號8樓
+佑電YOUDEN,臺北市內湖區瑞光路583巷21號6樓之4
+順達Dynapack,桃園市龜山區文禾路188號13樓
+嘉光科技 GAINFORCE,臺北市士林區後港街98號6樓
+洪笙科技 ANNVOLT,新北市新莊區榮華路2段91號4樓
+瑞芯EMTAK,新北市新莊區新北大道3段3號9樓
+力英 LTE,新北市三峽區介壽路一段311巷29號
+Calcomp,222新北市深坑區北深路三段147號
+威海WEIHAI POWER,235新北市中和區中正路700號6號樓之 6
+神雲數位MITAC,333桃園市龜山區文化二路200號
+固緯 236,新北市土城區中興路7-1號
+台達桃五廠 333,桃園市龜山區山鶯路268號
+Cyntech 308,新竹縣寶山鄉研發二路2號
+Supermicro,新北市新北市中和區建一路150號12F
+Horustech(中壢),桃園縣桃園市中壢區中央東路88號19樓之4
+聯昌電子企業股份有限公司LIEN CHANG,臺北市內湖區南京東路6段501號11樓
+緯創資通Wistron,221新北市汐止區新台五路一段88號
+力億tigerpower,台北市內湖區瑞光路618號
+太生能源APOLLO ENERGY,新北市樹林區中華路379巷86號5樓
+韋福電子 WELL-FORCE,新北市新莊區中正路657之10號5樓
+士林電機新豐廠 Shihlin Electric,新竹縣新豐鄉中崙村234號
+加百裕,桃園市龍潭區烏林里工五路128號
+Timotion,新北市新店區民權路100號10樓
+Trendpower,新竹縣湖口鄉湖口村八德路二段656號
+台林電通Tailyn,桃園市蘆竹區榮安路10號
+維洋 MOBILE ENERGY,新北市林口區工九路13號
+信通交通SENTEC,桃園市龍潭區工五路32號
+昇頻PROSCEND 新竹科學園區,新竹市工業東四路36號2樓
+家,新北市土城區中央路二段61巷35號
+公司,100台北市中正區忠孝東路一段112 樓9號
+AOEM,106台北市大安區基隆路四段43號研揚大樓7樓
+偉誠WELLTRON,新北市汐止區康寧街169巷31之1號3樓之1
+peplink,103台北市大同區承德路一段70號4樓
+汎瑞斯 ARAS,桃園市龍潭區烏林里39鄰工二路一段177號
+
 </textarea>
     </div>
 
     <div class="card p-3 bg-light">
         <div class="mb-3">
             <label class="form-label">日期</label>
-            <input type="date" id="tripDate" class="form-control">
+            <input type="date" id="tripDate" class="form-control" value="2025-11-01">
         </div>
-        <div class="mb-3">
+        
+        <div class="mb-3" style="position: relative;"> 
             <label class="form-label">行程 (用連字號 - 分隔)</label>
-            <input type="text" id="routeInput" class="form-control" placeholder="例如: HOME-公司-電統-HOME" value="HOME-公司-HOME">
-        </div>
-        <button onclick="calculateRoute()" class="btn btn-primary w-100">計算里程</button>
+            <input type="text" id="routeInput" class="form-control" placeholder="例如: HOME-公司-電統-HOME" value="HOME-公司-HOME" oninput="handleRouteInput(this)">
+            <div id="suggestions"></div> </div>
+
+        <button onclick="calculateRoute()" class="btn btn-primary w-100">計算里程並新增行程</button>
     </div>
 
-    <div id="resultArea" class="result-card">
-        </div>
+    <div id="lastCalculationSummary" class="result-card"></div>
+
+    <h4 class="mt-4">行程歷史紀錄 (總計)</h4>
+    <div id="tripHistoryTable"></div>
 
     <button onclick="exportCSV()" class="btn btn-success mt-3 w-100" id="exportBtn" style="display:none;">匯出 CSV 報表</button>
     
     <div id="map"></div>
 
-    <!-- 使用者輸入 Google Maps API Key，按載入後動態注入 Google Maps SDK -->
     <div class="card p-3 my-3">
         <label class="form-label">Google Maps API Key (由使用者輸入啟用地圖功能)</label>
         <div class="input-group">
             <input id="gmapsKey" class="form-control" placeholder="輸入 API Key (可儲存於 localStorage)">
-            <button id="loadMapsBtn" class="btn btn-outline-secondary">載入 Google Maps</button>
+            <button id="loadMapsBtn" class="btn btn-outline-primary" type="button">載入 Google Maps</button>
             <button id="clearKeyBtn" class="btn btn-outline-danger" type="button">清除金鑰</button>
         </div>
         <div class="d-flex justify-content-between mt-2">
-            <div class="form-text">若已儲存金鑰，會自動填入；不輸入亦可使用基本匯出功能，但無法計算路線。</div>
+            <div class="form-text">若已儲存金鑰，會自動填入；不輸入無法計算路線。</div>
             <div class="form-text"><small id="savedKeyStatus">未儲存金鑰</small></div>
         </div>
     </div>
+
 
     <script>
         // 註冊 PWA Service Worker（含成功/錯誤回報）
@@ -67,6 +216,93 @@ Chroma,桃園市龜山區文茂路88號
                 .then(reg => console.log('ServiceWorker registered:', reg))
                 .catch(err => console.error('ServiceWorker register failed:', err));
         }
+
+        // 全域變數儲存計算結果
+        let tripHistory = [];
+        let addressNames = []; // 儲存地址簿中的所有名稱
+
+        // --- 新增：自動提示功能邏輯 ---
+
+        // 解析地址簿中的所有名稱
+        function parseAddressBookNames() {
+             const raw = document.getElementById('addressBook').value;
+             const lines = raw.trim().split('\n').filter(line => line.trim() !== '');
+             addressNames = [];
+             for (let line of lines) {
+                 const parts = line.split(',');
+                 if (parts.length >= 1 && parts[0].trim()) addressNames.push(parts[0].trim());
+             }
+        }
+        
+        // 處理行程輸入框的輸入事件
+        function handleRouteInput(inputElement) {
+            const inputValue = inputElement.value;
+            // 找出最後一個連字符號的位置
+            const lastHyphenIndex = inputValue.lastIndexOf('-');
+            
+            let currentTerm; // 當前正在輸入的詞彙
+            let precedingRoute; // 前面的已完成路徑 (含最後一個連字符號)
+
+            if (lastHyphenIndex === -1) {
+                currentTerm = inputValue;
+                precedingRoute = "";
+            } else {
+                currentTerm = inputValue.substring(lastHyphenIndex + 1);
+                precedingRoute = inputValue.substring(0, lastHyphenIndex + 1);
+            }
+            
+            // 重新解析地址簿 (如果使用者修改了地址簿內容)
+            parseAddressBookNames();
+
+            // 過濾匹配的建議
+            const suggestions = addressNames.filter(name => 
+                name.toUpperCase().includes(currentTerm.toUpperCase()) && currentTerm.length > 0
+            );
+
+            renderSuggestions(precedingRoute, currentTerm, suggestions);
+        }
+
+        // 渲染建議清單
+        function renderSuggestions(precedingRoute, currentTerm, suggestions) {
+            const suggestionsDiv = document.getElementById('suggestions');
+            suggestionsDiv.innerHTML = ''; // 清空舊建議
+
+            if (suggestions.length === 0 || currentTerm.trim().length === 0) {
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+            // 只顯示前5個建議
+            suggestions.slice(0, 5).forEach(name => { 
+                const item = document.createElement('div');
+                item.className = 'suggestion-item';
+                item.textContent = name;
+                // 點擊後執行選取操作
+                item.onclick = () => selectSuggestion(precedingRoute, name);
+                fragment.appendChild(item);
+            });
+            
+            suggestionsDiv.appendChild(fragment);
+        }
+
+        // 選擇建議
+        function selectSuggestion(precedingRoute, selectedName) {
+            document.getElementById('routeInput').value = precedingRoute + selectedName;
+            document.getElementById('suggestions').innerHTML = ''; // 清空提示
+            document.getElementById('routeInput').focus(); // 保持焦點
+        }
+        
+        // 點擊輸入框以外的區域時，隱藏提示 (為了乾淨的 UI)
+        document.addEventListener('click', (event) => {
+            const suggestionsDiv = document.getElementById('suggestions');
+            const routeInput = document.getElementById('routeInput');
+            if (suggestionsDiv && routeInput && !routeInput.contains(event.target)) {
+                suggestionsDiv.innerHTML = '';
+            }
+        });
+
+
+        // --- 原有邏輯 (保持不變) ---
 
         // 動態載入 Google Maps API 的函式
         function loadGoogleMapsApi(key, callback) {
@@ -85,6 +321,8 @@ Chroma,桃園市龜山區文茂路88號
             script.onload = () => {
                 try { localStorage.setItem('gmaps_api_key', key); } catch(e){}
                 console.log('Google Maps API loaded');
+                document.getElementById('loadMapsBtn').textContent = 'API 已載入';
+                document.getElementById('loadMapsBtn').disabled = true;
                 if (callback) callback();
             };
             script.onerror = () => {
@@ -93,7 +331,7 @@ Chroma,桃園市龜山區文茂路88號
             document.head.appendChild(script);
         }
 
-        // 頁面載入時把儲存的 key 填回輸入框，並綁定載入按鈕
+        // 頁面載入時處理 API Key UI
         document.addEventListener('DOMContentLoaded', () => {
             const input = document.getElementById('gmapsKey');
             const btn = document.getElementById('loadMapsBtn');
@@ -104,6 +342,7 @@ Chroma,桃園市龜山區文茂路88號
                 if (saved) {
                     input.value = saved;
                     if (statusEl) statusEl.textContent = '已儲存金鑰';
+                    loadGoogleMapsApi(saved);
                 } else {
                     if (statusEl) statusEl.textContent = '未儲存金鑰';
                 }
@@ -117,45 +356,100 @@ Chroma,桃園市龜山區文茂路88號
                 try { localStorage.removeItem('gmaps_api_key'); } catch(e){}
                 input.value = '';
                 if (statusEl) statusEl.textContent = '已清除金鑰';
+                window.location.reload(); 
             });
+
+            // 確保在載入後解析地址簿名稱
+            parseAddressBookNames();
+            renderTripHistory(); // 初始渲染空的或已儲存的歷史記錄
         });
 
-        // 全域變數儲存計算結果
-        let tripHistory = [];
 
         // 解析地址簿
         function getAddress(name) {
             const raw = document.getElementById('addressBook').value;
-            const lines = raw.split('\n');
+            const lines = raw.trim().split('\n');
             name = name.trim();
             for (let line of lines) {
-                const [key, addr] = line.split(',');
-                if (key && addr && key.trim() === name) {
-                    return addr.trim();
+                const parts = line.split(',');
+                if (parts.length === 2 && parts[0].trim() === name) {
+                    return parts[1].trim();
                 }
             }
-            return name; // 找不到就直接回傳原名
+            return name; 
         }
 
-        function calculateRoute() {
-            // 檢查是否已載入 Google Maps API
-            if (!(window.google && google.maps && google.maps.DirectionsService)) {
-                alert('尚未載入 Google Maps API，請先輸入 API Key 並按「載入 Google Maps」以啟用路線計算。');
-                return;
-            }
-
-            const date = document.getElementById('tripDate').value || new Date().toISOString().split('T')[0];
-            const routeStr = document.getElementById('routeInput').value;
-            const stops = routeStr.split('-');
-
-            if (stops.length < 2) {
-                alert("請至少輸入起點和終點，例如 A-B");
-                return;
-            }
-
-            const directionsService = new google.maps.DirectionsService();
+        // 渲染歷史表格 (新增/移除行程後呼叫)
+        function renderTripHistory() {
+            const historyContainer = document.getElementById('tripHistoryTable');
+            let html = `
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>行程</th>
+                            <th>里程 (KM)</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
             
-            // 轉換地址
+            let totalKm = 0;
+            
+            tripHistory.forEach((trip, index) => {
+                totalKm += parseFloat(trip.km);
+                html += `
+                    <tr>
+                        <td>${trip.date}</td>
+                        <td><a href="${trip.link}" target="_blank">${trip.route}</a></td>
+                        <td>${trip.km}</td>
+                        <td><button class="btn btn-sm btn-danger" onclick="removeTrip(${index})">移除</button></td>
+                    </tr>`;
+            });
+            
+            html += `
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"><strong>總里程合計 (KM)</strong></td>
+                            <td><strong>${totalKm.toFixed(1)}</strong></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>`;
+                
+            historyContainer.innerHTML = html;
+            
+            document.getElementById('exportBtn').style.display = tripHistory.length > 0 ? 'block' : 'none';
+        }
+
+        // 移除單一行程
+        function removeTrip(index) {
+            if (confirm('確定要移除此行程嗎？')) {
+                tripHistory.splice(index, 1);
+                renderTripHistory();
+            }
+        }
+
+        // 核心計算邏輯
+        function calculateRoute() {
+            if (!(window.google && google.maps && google.maps.DirectionsService)) {
+                alert('計算里程需要 Google Maps API，請先輸入 API Key 並按「載入 Google Maps」。');
+                return;
+            }
+            const date = document.getElementById('tripDate').value;
+            const routeStr = document.getElementById('routeInput').value;
+            
+            if (!date || !routeStr.trim()) {
+                alert('請確認日期和行程欄位已填寫');
+                return;
+            }
+            // 確保地址簿是最新的，以防使用者在輸入前才修改
+            parseAddressBookNames(); 
+
+            const stops = routeStr.split('-');
+            const directionsService = new google.maps.DirectionsService();
+
             const origin = getAddress(stops[0]);
             const destination = getAddress(stops[stops.length - 1]);
             const waypoints = stops.slice(1, -1).map(s => ({
@@ -169,8 +463,11 @@ Chroma,桃園市龜山區文茂路88號
                 waypoints: waypoints,
                 travelMode: 'DRIVING'
             };
+            
+            document.getElementById('lastCalculationSummary').innerHTML = `<div class="alert alert-info">計算中，請稍候...</div>`;
 
             directionsService.route(request, function(result, status) {
+                const summaryDiv = document.getElementById('lastCalculationSummary');
                 if (status == 'OK') {
                     let totalDistance = 0;
                     const myRoute = result.routes[0];
@@ -180,43 +477,43 @@ Chroma,桃園市龜山區文茂路88號
                     
                     const km = (totalDistance / 1000).toFixed(1);
                     
-                    // 產生 Google Maps 連結
-                    const encodedStops = stops.map(s => encodeURIComponent(getAddress(s))).join('/');
-                    const mapLink = `https://www.google.com/maps/dir/${encodedStops}`;
+                    // 產生 Google Maps 連結 (簡化且可用的連結)
+                    // URL 格式: https://www.google.com/maps/dir/addr1/addr2/addr3
+                    const addrComponents = [origin, ...waypoints.map(w => w.location), destination];
+                    const mapLink = `https://www.google.com/maps/dir/${addrComponents.map(a => encodeURIComponent(a)).join('/')}`;
 
-                    // 顯示結果
-                    const resultDiv = document.getElementById('resultArea');
-                    const html = `
+                    summaryDiv.innerHTML = `
                         <div class="alert alert-success">
-                            <h5>計算成功!</h5>
-                            <p><strong>行程:</strong> ${routeStr}</p>
+                            <h5>✅ ${date} 行程新增成功!</h5>
                             <p><strong>總里程:</strong> ${km} km</p>
                             <a href="${mapLink}" target="_blank" class="btn btn-sm btn-outline-primary">查看地圖</a>
                         </div>
                     `;
-                    resultDiv.innerHTML = html;
 
-                    // 儲存到歷史紀錄
                     tripHistory.push({ date, route: routeStr, km, link: mapLink });
-                    document.getElementById('exportBtn').style.display = 'block';
-
+                    renderTripHistory();
+                    
+                    document.getElementById('routeInput').value = '';
+                    
                 } else {
-                    alert('計算失敗，請檢查地址是否正確: ' + status);
+                    summaryDiv.innerHTML = `<div class="alert alert-danger">❌ 計算失敗 (${status})，請檢查地址名稱是否在地址簿中。</div>`;
                 }
             });
         }
-
+        
+        // 匯出 CSV 檔案
         function exportCSV() {
             let csvContent = "\uFEFF日期,行程,里程(KM),連結\n";
             tripHistory.forEach(row => {
-                csvContent += `${row.date},${row.route},${row.km},${row.link}\n`;
+                const routeClean = row.route.replace(/,/g, ';');
+                csvContent += `${row.date},"${routeClean}",${row.km},${row.link}\n`;
             });
 
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
             link.setAttribute("href", url);
-            link.setAttribute("download", "差旅報表.csv");
+            link.setAttribute("download", "差旅報表_" + new Date().toISOString().split('T')[0] + ".csv");
             link.click();
         }
     </script>
