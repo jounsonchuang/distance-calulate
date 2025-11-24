@@ -45,7 +45,10 @@
     </div>
 
     <!-- 已移除預設常用地址；請使用「從檔案載入」或「從 URL 載入」功能載入地址資料 -->
-    <div class="mb-2"><small class="text-muted">預設地址已移除。請使用上方按鈕載入地址，或從 URL 載入。</small></div>
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div><small class="text-muted">預設地址已移除。請使用上方按鈕載入地址，或從 URL 載入。</small></div>
+        <div><small id="addressCount" class="text-muted">已載入 0 筆地址</small></div>
+    </div>
 
     <!-- 隱藏的地址簿儲存區（供載入/匯出/自動完成使用） -->
     <textarea id="addressBook" style="display:none"></textarea>
@@ -110,7 +113,12 @@
                  const parts = line.split(',');
                  if (parts.length >= 1 && parts[0].trim()) addressNames.push(parts[0].trim());
              }
-        }
+                }
+                    // 更新 UI 的已載入筆數顯示（若存在）
+                    try {
+                        const c = document.getElementById('addressCount');
+                        if (c) c.textContent = `已載入 ${addressNames.length} 筆地址`;
+                    } catch(e){}
         
         // 處理行程輸入框的輸入事件
         function handleRouteInput(inputElement) {
@@ -273,6 +281,14 @@
                             document.getElementById('addressBook').value = text.trim();
                         }
                         parseAddressBookNames();
+                        // 載入後自動 focus 並觸發一次提示更新（如果使用者已在 routeInput 輸入）
+                        try {
+                            const ri = document.getElementById('routeInput');
+                            if (ri) {
+                                ri.focus();
+                                handleRouteInput(ri);
+                            }
+                        } catch(e){}
                     };
                     reader.readAsText(f, 'UTF-8');
                 });
@@ -292,6 +308,13 @@
                             document.getElementById('addressBook').value = text.trim();
                         }
                         parseAddressBookNames();
+                        try {
+                            const ri = document.getElementById('routeInput');
+                            if (ri) {
+                                ri.focus();
+                                handleRouteInput(ri);
+                            }
+                        } catch(e){}
                     }).catch(err => alert('載入失敗：' + err.message));
                 });
             }
