@@ -237,7 +237,18 @@
                 window.location.reload(); 
             });
 
-            // 確保在載入後解析地址簿名稱
+            // 確保啟動時不自動載入任何內部儲存的地址：清空隱藏的 addressBook
+            try {
+                const ab = document.getElementById('addressBook');
+                if (ab) {
+                    ab.value = ''; // 不保留上次的地址內容，僅由使用者主動載入
+                }
+                // 如果曾用 localStorage 儲存過地址（舊版本），一併清除
+                try { localStorage.removeItem('addressBook'); } catch(e){}
+                try { localStorage.removeItem('address_book'); } catch(e){}
+            } catch(e){}
+
+            // 解析（目前應為空，直到使用者載入檔案）
             parseAddressBookNames();
             renderTripHistory(); // 初始渲染空的或已儲存的歷史記錄
 
