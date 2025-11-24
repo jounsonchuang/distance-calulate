@@ -29,150 +29,9 @@
             padding: 8px 10px;
             cursor: pointer;
         }
-        .suggestion-item:hover {
-            background-color: #f0f0f0;
-        }
+        .suggestion-item:hover { background-color: #f8f9fa; }
+        .suggestion-item.active { background-color: #e9ecef; }
     </style>
-</head>
-<body>
-    <h3>🚗 差旅里程計算器 (PWA)</h3>
-    <div id="appVersion" class="text-muted" style="font-size:0.9rem">版本: 20251124-v3</div>
-    
-    <div class="mb-3">
-        <label class="form-label">設定常用地址 (格式: 名稱,地址)</label>
-        <textarea id="addressBook" class="form-control" rows="4">
-HOME,新北市土城區中央路二段61巷35號
-公司,臺北市中正區忠孝東路一段112號
-電統,臺北市內湖區堤頂大道1段1號
-INVENTEC,台北市內湖區行善路158號
-Chroma,桃園市龜山區文茂路88號
-台達二廠,桃園市龜山區山鶯路252號
-台達桃園二廠,桃園市龜山區山鶯路252號
-台達IABG,桃園市桃園區大林里興隆路18號
-台達中壢,桃園市中壢區永福里東園路16號
-內湖台達,114 台北市內湖區陽光街256號
-立端Lanner(台北),新北市汐止區大同路二段173號7樓
-立端Lanner(新竹),新竹市關新路27號3F~6
-致茂CHROMA,桃園市龜山區文茂路88 號
-3Y POWER 善元科技,桃園市龜山區民生北路一段576、578號2樓
-和碩Pegatron,台北市北投區立功街76號
-協同科技Union storage,新北市五股區五工路149號
-亞力電機allis,台北市南港區三重路19-11號12樓
-瑞澤中壢,桃園市中壢區中央東路88號18樓
-瑞澤新屋,新屋區中山東路一段156巷93弄19號
-威剛ADATA中和,新北市中和區中正路736號
-西勝國際地址,新北市新莊區中正路669號5樓
-嘉普科技TREND POWER,新竹縣湖口鄉八德路2段471號
-優源unifive,新北市三重區重新路五段609巷12號6樓之14
-天掄MAGIC POWER (Youden),新北市中和區連城路268號9樓
-台優電機TDCM(CJC),桃園市觀音區草漯里成功路一段507號
-鉅祥企業G-SHANK (Goaltech),桃園市桃園區復興路205號A棟17樓-3.
-廣明光電 Quanta Storage(Horustech),桃園市龜山區華亞二路58-2號6樓
-瑞安電資 Raitek(Horustech),桃園市龍潭區高原里渴望路83號1樓
-友達光電AUO(Horustech),臺灣新竹市300094東區科學園區力行二路1號
-聯嘉光電EOI(Horustech),台灣新竹科學工業園區苗栗縣竹南鎮科東一路2號
-有量科技Amita (CJC),桃園縣龜山鄉茶專路6號
-亞德光機Alder,桃園市平鎮區天津街171號
-佳世達 Qisda,桃園市龜山區山鶯路157號
-凱銳光電JET OPTO,台北市內湖區陽光街300號7樓之2
-達方電子 DARFON,龜山區山鶯路167-1號
-友達光電AUO(Horustech),臺灣新竹市300094東區科學園區力行二路1號
-明創科技MAXTRUM,新竹縣新埔鎮清水里汶水坑10鄰73號
-鴻騰精密科技 Foxconn,新北市土城區中山路66-1號
-鴻騰精密Foxconn Interconnect,新北市土城區中山路66-1號
-戴姆勒Daimler Trucks Asia Taiwan,台北市松山區敦化北路260號6樓
-HP,台北市南港區經貿二路66號10樓
-福峰great foward,桃園市龜山區復興三路398號(華亞科技園區)
-振曜科技NETRONIX 302,新竹縣竹北市博愛街945號
-HMD(厚美德) 305,新竹縣新埔鎮民生街181號
-美超微 storage 334,桃園市八德區興豐路1899號
-聯想LENOVO,台北市中山區樂群三路128號16樓
-ACBEL北投康舒,台北市北投區中央南路二段18號
-CHICONY三重群電,新北市三重區光復路2段69號
-LITEON新莊光寶,新北市新莊區思源路555號
-AbleTech淡水璟明設計,新北市金山區信義路76巷4號
-造隆,桃園市蘆竹區光明路二段151巷10號
-開元通訊InnoComm,新竹市新安路6號3樓
-Gogoro睿能創意,333桃園市龜山區頂湖路33號
-亞元ATECH,桃園市龜山區華亞一路66號
-亞源,桃園市龍潭區烏林里三十九鄰工二路一段177號
-CHEM中興電工,桃園市龜山區文德路25號
-Foctron鴻華先進,新北市新店區中興路三段3號8樓
-Sangean山進電子,23586 新北市中和區中正路928號17樓
-Arcadyan智易科技,300 新竹市東區光復路二段8號
-添誠資訊SURESTAR,新北市樹林區大安路2-1號
-CONTEC康泰克,235台灣中和區中正路738號
-CTECH西勝國際地址,新北市新莊區中正路669號5樓
-TSMT台表科,330 桃園縣桃園市桃園區桃鶯路439號
-CLEVO - 藍天電腦,新北市新莊區思源路555號35樓
-翌勝EDAC -,新北市中和區建一路150号11樓
-Inventec英業達,桃園區大智路88號
-艾普斯電源 (鎰福電子)preenpower,汐止大同路二段139號2樓
-亞力電機Allis(南港),115 台北市南港區三重路19-11號12樓
-亞力電機Allis(新莊),242 新北市新莊區瓊林南路317號
-Everfocus慧友,新北市板橋區文化路二段367號3樓
-亞元ATECH,台北市大安區基隆路4段43號研揚大樓7樓
-智邦accton,新竹市科學園區研新三路1號
-碩天Cyberpower,114 台北市內湖區金莊路26號11樓
-儀控TAIE,新北市中和區建八路2號4樓之9
-羅技Logitech,新竹科學工業園區新竹市研新四路2號
-全漢FSP,33068桃園市桃園區建國東路22號
-HCMF,新北市新店區北新路一段86號27樓
-研晶,新北市土城區永豐路173-8 號5 樓
-EVSBG,324桃園市平鎮區中興路平鎮段458號
-松美,新北市汐止區新台五路1段99號16樓之8
-UMEC,新北市三重區重新路5段609巷10號
-SOWCHENG碩成科技,328桃園市觀音區忠愛路愛一巷75弄7號崙坪一路7號
-系統電子Sysgration,114台北市內湖區堤頂大道一段1號
-奇景光電(HIMX),300新竹市東區光復路二段289號5 樓
-台林TAILYN,338028臺灣桃園市蘆竹區榮安路10號
-電統電源powertank energy,臺北市內湖區堤頂大道1段1號3樓之1
-工易自動化Endex,333桃園市龜山區科技一路29號
-宏力Horing Lih,235新北市中和區中山路二段327巷18號4樓
-怡利電子e-lead,509彰化縣伸港鄉工東一路37號
-Goalstar,桃園市桃園區文中里正光路423之3號
-QQE(亞元),106台北市大安區基隆路四段43號研揚大樓7樓
-Keeper咸瑞科技,248新北市五股區五權七路29號
-鴻發國際MASTERWORK AUTOMODULES,新北市汐止區新台五路一段114號11F
-肯微科技 Compuware,新北市中和區連城路232號5樓.
-信昌明芳集團 HCMF-,新北市新店區北新路一段86號27樓
-Foxtron鴻華先進,新北市新店區中興路三段3號8樓
-佑電YOUDEN,臺北市內湖區瑞光路583巷21號6樓之4
-順達Dynapack,桃園市龜山區文禾路188號13樓
-嘉光科技 GAINFORCE,臺北市士林區後港街98號6樓
-洪笙科技 ANNVOLT,新北市新莊區榮華路2段91號4樓
-瑞芯EMTAK,新北市新莊區新北大道3段3號9樓
-力英 LTE,新北市三峽區介壽路一段311巷29號
-Calcomp,222新北市深坑區北深路三段147號
-威海WEIHAI POWER,235新北市中和區中正路700號6號樓之 6
-神雲數位MITAC,333桃園市龜山區文化二路200號
-固緯 236,新北市土城區中興路7-1號
-台達桃五廠,桃園市龜山區山鶯路268號
-Cyntech,新竹縣寶山鄉研發二路2號
-Supermicro,新北市新北市中和區建一路150號12F
-Horustech(中壢),桃園縣桃園市中壢區中央東路88號19樓之4
-聯昌電子企業股份有限公司LIEN CHANG,臺北市內湖區南京東路6段501號11樓
-緯創資通Wistron,221新北市汐止區新台五路一段88號
-力億tigerpower,台北市內湖區瑞光路618號
-太生能源APOLLO ENERGY,新北市樹林區中華路379巷86號5樓
-韋福電子 WELL-FORCE,新北市新莊區中正路657之10號5樓
-士林電機新豐廠 Shihlin Electric,新竹縣新豐鄉中崙村234號
-加百裕,桃園市龍潭區烏林里工五路128號
-Timotion,新北市新店區民權路100號10樓
-Trendpower,新竹縣湖口鄉湖口村八德路二段656號
-台林電通Tailyn,桃園市蘆竹區榮安路10號
-維洋 MOBILE ENERGY,新北市林口區工九路13號
-信通交通SENTEC,桃園市龍潭區工五路32號
-昇頻PROSCEND 新竹科學園區,新竹市工業東四路36號2樓
-家,新北市土城區中央路二段61巷35號
-公司,台北市中正區忠孝東路一段112 樓9號
-AOEM,台北市大安區基隆路四段43號研揚大樓7樓
-偉誠WELLTRON,新北市汐止區康寧街169巷31之1號3樓之1
-peplink,台北市大同區承德路一段70號4樓
-汎瑞斯 ARAS,桃園市龍潭區烏林里39鄰工二路一段177號
-
-</textarea>
-    </div>
 
     <div class="mb-2 d-flex gap-2">
         <input id="addressFileInput" type="file" accept=".txt,.csv" class="form-control form-control-sm" style="max-width:320px">
@@ -181,6 +40,12 @@ peplink,台北市大同區承德路一段70號4樓
         <button id="fetchUrlBtn" class="btn btn-sm btn-outline-secondary">從 URL 載入</button>
         <button id="downloadAddressBtn" class="btn btn-sm btn-success">下載地址簿</button>
     </div>
+
+    <!-- 已移除預設常用地址；請使用「從檔案載入」或「從 URL 載入」功能載入地址資料 -->
+    <div class="mb-2"><small class="text-muted">預設地址已移除。請使用上方按鈕載入地址，或從 URL 載入。</small></div>
+
+    <!-- 隱藏的地址簿儲存區（供載入/匯出/自動完成使用） -->
+    <textarea id="addressBook" style="display:none"></textarea>
 
     <div class="card p-3 bg-light">
         <div class="mb-3">
